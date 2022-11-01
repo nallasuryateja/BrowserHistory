@@ -1,0 +1,24 @@
+.bg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: blue;
+  width: 100%;
+  padding: 20px;
+}
+.History-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+}
+
+.lisu {
+  list-style: none;
+}

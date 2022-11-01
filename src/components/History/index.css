@@ -1,0 +1,25 @@
+.list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+  margin: 20px;
+  width: 80%;
+}
+.sub {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 65%;
+}
+.tim {
+  width: 25%;
+}
+
+.delete {
+  display: flex;
+  justify-content: flex-end;
+  width: 32px;
+  height: 20px;
+  cursor: pointer;
+}

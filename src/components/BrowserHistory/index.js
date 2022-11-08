@@ -3,20 +3,32 @@ import './index.css'
 import History from '../History'
 
 class BrowserHistory extends Component {
-  state = {
-    inputValue: '',
+  constructor(props) {
+    super(props)
+    const {initialHistoryList} = this.props
+    this.state = {
+      inputValue: '',
+      initialHistoryListt: initialHistoryList,
+    }
   }
 
   change = event => {
     this.setState({inputValue: event.target.value})
   }
 
+  deleteUser = id => {
+    const {initialHistoryListt} = this.state
+
+    const filteredList = initialHistoryListt.filter(each => each.id !== id)
+    this.setState({initialHistoryListt: filteredList})
+  }
+
   render() {
-    const {initialHistoryList} = this.props
-    const a = {
-      listuu: initialHistoryList,
-    }
-    const {inputValue} = this.state
+    const {inputValue, initialHistoryListt} = this.state
+
+    const searchResults = initialHistoryListt.filter(eachUser =>
+      eachUser.title.includes(inputValue),
+    )
 
     return (
       <div className="bg-container">
@@ -35,13 +47,15 @@ class BrowserHistory extends Component {
         </div>
         <div className="History-card">
           <ul className="lisu">
-            {a.listuu.map(eachHistory => (
-              <History
-                key={eachHistory.id}
-                HistoryDetails={eachHistory}
-                deleteItem={this.deleteUser}
-              />
-            ))}
+            {searchResults.length > 0 &&
+              searchResults.map(eachHistory => (
+                <History
+                  key={eachHistory.id}
+                  HistoryDetails={eachHistory}
+                  deleteItem={this.deleteUser}
+                />
+              ))}
+            {searchResults <= 0 && <p>There is no history to show</p>}
           </ul>
         </div>
       </div>
